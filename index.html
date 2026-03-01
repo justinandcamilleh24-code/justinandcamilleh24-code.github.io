@@ -256,6 +256,21 @@
   // Add samurai exit tile
   map[3][30] = 4;
 
+  const DRAW = {
+  WALL_TEXTURE: { x: 4, y: 6, w: 2, h: 2, x2: 14, y2: 12 },
+  DOOR: { x: 3, y: 3, w: 8, h: 8, lineW: 2, lineH: 6 },
+  EXIT: { x: 6, y: 3, w: 12, h: 18, baseW: 12, baseH: 
+    2 },
+  RELIC: { x: 8, y: 6, w: 8, h: 12, lineX: 9, lineY: 7, lineW: 6, lineH: 3 },
+  TRAP: { x: 7, y: 10, w: 10, h: 4, crossX: 10, crossY: 7, crossSize: 4 },
+  PLAYER: { shadowX: 6, shadowY: 18, shadowW: 12, shadowH: 4, bodyX: 6, bodyY: 6, bodyW: 12, bodyH: 12, headH: 3 },
+};
+  
+  // Walls
+ctx.fillRect(sx + DRAW.WALL_TEXTURE.x, sy + DRAW.WALL_TEXTURE.y, DRAW.WALL_TEXTURE.w, DRAW.WALL_TEXTURE.h);
+ctx.fillRect(sx + DRAW.WALL_TEXTURE.x2, sy + DRAW.WALL_TEXTURE.y2, DRAW.WALL_TEXTURE.w, DRAW.WALL_TEXTURE.h);
+
+  
   function inBounds(x,y){ return x>=0 && y>=0 && x<MAP_W && y<MAP_H; }
   function tileAt(x,y){ if(!inBounds(x,y)) return 1; return map[y][x]; }
   function passable(x,y){
