@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Refactored Code</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Shadow & Steel Game</title>
 </head>
 <body>
+    <div id="game">
+        <h1>Shadow & Steel</h1>
+        <div id="playerRole"></div>
+        <div id="world"></div>
+        <button id="actionButton">Take Action</button>
+    </div>
     <script>
-        // Unified coordinate conversion
-        function convertCoordinates(x, y) {
-            return { x: x * scaleFactor, y: y * scaleFactor };
-        }
+        const button = document.getElementById('actionButton');
+        let trapsRevealed = false;
 
-        // Centralized control binding
-        function setupEventBindings() {
-            document.getElementById('someButton').addEventListener('click', handleButtonClick);
-            // Additional bindings...
-        }
+        const isTrapsRevealed = () => trapsRevealed;
+        const applyTrapDamage = (damage) => { /* logic to apply damage to player */ };
+        const worldToScreen = (x, y) => { /* logic to convert world coordinates to screen */ };
+        const getPlayerRole = () => { return "Player Role"; };
 
-        // Extracted trap reveal helper
-        function revealTrap(trapId) {
-            const trapElement = document.getElementById(trapId);
-            trapElement.style.display = 'block';
-        }
+        const initializeGame = () => {
+            // Setup game logic and rendering
+            renderPlayerRole();
+        };
 
-        // Simplified drawing with helper functions
-        function drawShape(context, shape) {
-            context.beginPath();
-            // drawing logic based on shape type
-            context.fill();
-        }
+        const renderPlayerRole = () => {
+            document.getElementById('playerRole').innerText = getPlayerRole();
+        };
 
-        // Improved button binding logic
-        function handleButtonClick() {
-            // Button click handling logic
-            const coords = convertCoordinates(10, 20);
-            drawShape(context, coords);
-        }
+        button.onclick = () => {
+            if (!isTrapsRevealed()) {
+                trapsRevealed = true;
+                applyTrapDamage(10); // example damage
+                renderWorld();
+            }
+        };
 
-        // Initialize
-        setupEventBindings();
+        const renderWorld = () => {
+            // Render world on the screen
+        };
+
+        window.onload = initializeGame;
     </script>
 </body>
 </html>
